@@ -1,0 +1,23 @@
+{
+  "name": "barbearia-performance",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Estilo Livre (barbearia) - análise e otimização de performance com Lighthouse",
+  "type": "module",
+  "scripts": {
+    "imagens": "node scripts/otimizar-imagens.mjs",
+    "icones": "node scripts/gerar-icones.mjs",
+    "bootstrap": "node scripts/purgar-bootstrap.mjs",
+    "build": "node scripts/build.mjs",
+    "tudo": "npm run imagens && npm run icones && npm run bootstrap && npm run build",
+    "start": "npx serve dist"
+  },
+  "devDependencies": {
+    "bootstrap": "5.3.3",
+    "bootstrap-icons": "1.11.3",
+    "esbuild": "^0.28.2",
+    "sharp": "^0.35.4"
+  },
+  "author": "Douglas Henrique",
+  "license": "MIT"
+}

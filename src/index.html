@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estilo Livre | Barbearia</title>
+  <meta name="description" content="Estilo Livre - Barbearia moderna com cortes, barba e cuidados premium.">
+
+  <meta name="theme-color" content="#7c3aed">
+
+  <!-- Fontes locais (Poppins, subconjunto latin em woff2): pré-carrega as do texto principal -->
+  <link rel="preload" href="fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Bootstrap enxuto (só as regras usadas) + estilos do projeto.
+       No build (dist/) os dois arquivos são minificados e embutidos aqui. -->
+  <link href="css/bootstrap-enxuto.css" rel="stylesheet" data-inline>
+  <link href="css/style.css" rel="stylesheet" data-inline>
+
+  <!-- Aplica o tema salvo antes de renderizar (evita "piscar") -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('tema-estilo-livre') || 'light';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-bs-theme', t === 'purple' ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ICONES:INICIO (gerado por scripts/gerar-icones.mjs) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="bi-arrow-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/></symbol>
+    <symbol id="bi-award" viewBox="0 0 16 16"><path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702z"/> <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/></symbol>
+    <symbol id="bi-calendar-check" viewBox="0 0 16 16"><path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/> <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></symbol>
+    <symbol id="bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></symbol>
+    <symbol id="bi-clock" viewBox="0 0 16 16"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/> <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/></symbol>
+    <symbol id="bi-clock-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/></symbol>
+    <symbol id="bi-droplet-half" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10c0 0 2.5 1.5 5 .5s5-.5 5-.5c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/> <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/></symbol>
+    <symbol id="bi-emoji-sunglasses" viewBox="0 0 16 16"><path d="M4.968 9.75a.5.5 0 1 0-.866.5A4.5 4.5 0 0 0 8 12.5a4.5 4.5 0 0 0 3.898-2.25.5.5 0 1 0-.866-.5A3.5 3.5 0 0 1 8 11.5a3.5 3.5 0 0 1-3.032-1.75M7 5.116V5a1 1 0 0 0-1-1H3.28a1 1 0 0 0-.97 1.243l.311 1.242A2 2 0 0 0 4.561 8H5a2 2 0 0 0 1.994-1.839A3 3 0 0 1 8 6c.393 0 .74.064 1.006.161A2 2 0 0 0 11 8h.438a2 2 0 0 0 1.94-1.515l.311-1.242A1 1 0 0 0 12.72 4H10a1 1 0 0 0-1 1v.116A4.2 4.2 0 0 0 8 5c-.35 0-.69.04-1 .116"/> <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0"/></symbol>
+    <symbol id="bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></symbol>
+    <symbol id="bi-geo-alt-fill" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></symbol>
+    <symbol id="bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></symbol>
+    <symbol id="bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></symbol>
+    <symbol id="bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/> <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/></symbol>
+    <symbol id="bi-scissors" viewBox="0 0 16 16"><path d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61zm2.5 10a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0m7 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/></symbol>
+    <symbol id="bi-send" viewBox="0 0 16 16"><path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/></symbol>
+    <symbol id="bi-star-fill" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></symbol>
+    <symbol id="bi-star-half" viewBox="0 0 16 16"><path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/></symbol>
+    <symbol id="bi-stars" viewBox="0 0 16 16"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/></symbol>
+    <symbol id="bi-sun-fill" viewBox="0 0 16 16"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/></symbol>
+    <symbol id="bi-telephone-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></symbol>
+    <symbol id="bi-whatsapp" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></symbol>
+  </svg>
+  <!-- ICONES:FIM -->
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-glass">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#home">
+        <span class="logo-badge"><svg class="bi" aria-hidden="true"><use href="#bi-scissors"></use></svg></span>
+        Estilo <span class="text-brand">Livre</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+              data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+              aria-expanded="false" aria-label="Abrir menu">
+        <svg class="bi fs-2" aria-hidden="true"><use href="#bi-list"></use></svg>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <button id="btnTema" class="btn btn-theme" type="button" aria-label="Alternar tema">
+              <svg class="bi" id="iconeTema" aria-hidden="true"><use href="#bi-moon-stars-fill"></use></svg>
+              <span id="textoTema">Tema roxo</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ HOME ============ -->
+    <section id="home" class="hero d-flex align-items-center">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <span class="badge-pill mb-3"><svg class="bi" aria-hidden="true"><use href="#bi-stars"></use></svg> Barbearia premium desde 2015</span>
+            <h1 class="display-3 fw-extrabold mb-3">
+              Seu estilo, <br><span class="text-gradient">do seu jeito.</span>
+            </h1>
+            <p class="lead mb-4 text-muted-theme">
+              Cortes modernos, barba bem feita e um ambiente pensado para você relaxar.
+              Aqui cada detalhe conta para você sair com a melhor versão de si mesmo.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+              <a href="#contato" class="btn btn-brand btn-lg"><svg class="bi me-2" aria-hidden="true"><use href="#bi-calendar-check"></use></svg>Agendar horário</a>
+              <a href="#servicos" class="btn btn-outline-brand btn-lg">Ver serviços</a>
+            </div>
+            <div class="row mt-5 g-3 text-center text-lg-start">
+              <div class="col-4"><div class="stat-number">8+</div><small class="text-muted-theme">anos de estrada</small></div>
+              <div class="col-4"><div class="stat-number">12k</div><small class="text-muted-theme">clientes felizes</small></div>
+              <div class="col-4"><div class="stat-number">4.9</div><small class="text-muted-theme">avaliação média</small></div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="hero-photo">
+              <picture>
+                <!-- No mobile a coluna fica oculta: entrega um GIF de 1px e evita baixar a foto -->
+                <source media="(max-width: 991.98px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                <source type="image/avif" srcset="img/home-600.avif">
+                <img src="img/home-600.webp" alt="Barbeiro realizando corte de cabelo" class="img-fluid"
+                     width="600" height="338" fetchpriority="high" decoding="async">
+              </picture>
+              <div class="hero-card hero-card-float">
+                <h6 class="fw-bold mb-1">Corte + Barba</h6>
+                <div class="d-flex justify-content-between align-items-center gap-4">
+                  <span class="fs-4 fw-bold text-brand">R$ 70</span>
+                  <span class="badge-pill"><svg class="bi" aria-hidden="true"><use href="#bi-clock"></use></svg> 60 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE NÓS ============ -->
+    <section id="sobre" class="py-section section-alt">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <picture>
+              <source type="image/avif" srcset="img/sobre-400.avif 400w, img/sobre-612.avif 612w"
+                      sizes="(min-width: 1400px) 636px, (min-width: 1200px) 546px, (min-width: 992px) 456px, (min-width: 768px) 696px, (min-width: 576px) 516px, calc(100vw - 24px)">
+              <img src="img/sobre-612.webp" srcset="img/sobre-400.webp 400w, img/sobre-612.webp 612w"
+                   sizes="(min-width: 1400px) 636px, (min-width: 1200px) 546px, (min-width: 992px) 456px, (min-width: 768px) 696px, (min-width: 576px) 516px, calc(100vw - 24px)"
+                   class="img-fluid rounded-4 shadow about-img" alt="Interior da barbearia Estilo Livre"
+                   width="612" height="437" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="col-lg-6">
+            <span class="section-tag">Sobre nós</span>
+            <h2 class="section-title">Tradição de barbearia com <span class="text-brand">visual moderno</span></h2>
+            <p class="text-muted-theme">
+              A Estilo Livre nasceu da vontade de unir o clássico da barbearia com o que há de mais atual em
+              tendências. Nosso time é formado por profissionais apaixonados pelo que fazem, sempre em busca
+              de técnicas novas e de um atendimento que faz você se sentir em casa.
+            </p>
+            <p class="text-muted-theme">
+              Aqui você encontra um espaço descontraído, produtos de qualidade e um serviço personalizado:
+              cada corte é pensado para o seu rosto, sua rotina e a sua personalidade.
+            </p>
+            <ul class="list-unstyled mt-4 mb-0">
+              <li class="mb-2"><svg class="bi text-brand me-2" aria-hidden="true"><use href="#bi-check-circle-fill"></use></svg>Profissionais experientes e atualizados</li>
+              <li class="mb-2"><svg class="bi text-brand me-2" aria-hidden="true"><use href="#bi-check-circle-fill"></use></svg>Produtos premium e higiene rigorosa</li>
+              <li class="mb-2"><svg class="bi text-brand me-2" aria-hidden="true"><use href="#bi-check-circle-fill"></use></svg>Ambiente confortável, com café e Wi-Fi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section id="servicos" class="py-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Serviços</span>
+          <h2 class="section-title">O que <span class="text-brand">fazemos</span> por você</h2>
+          <p class="text-muted-theme mx-auto" style="max-width: 560px;">
+            Escolha o serviço ideal e saia daqui pronto para qualquer ocasião.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <picture>
+                <source type="image/avif" srcset="img/corte-320.avif 320w, img/corte-640.avif 640w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)">
+                <img src="img/corte-640.webp" srcset="img/corte-320.webp 320w, img/corte-640.webp 640w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)"
+                     class="card-img-top service-img" alt="Corte de cabelo" width="640" height="400" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-body p-4">
+                <div class="service-icon"><svg class="bi" aria-hidden="true"><use href="#bi-scissors"></use></svg></div>
+                <h5 class="card-title fw-bold">Corte de Cabelo</h5>
+                <p class="card-text text-muted-theme">Degradê, social, navalhado ou clássico, do jeito que você quiser.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 45</span>
+                  <small class="text-muted-theme"><svg class="bi" aria-hidden="true"><use href="#bi-clock"></use></svg> 40 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <picture>
+                <source type="image/avif" srcset="img/barba-320.avif 320w, img/barba-640.avif 640w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)">
+                <img src="img/barba-640.webp" srcset="img/barba-320.webp 320w, img/barba-640.webp 640w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)"
+                     class="card-img-top service-img" alt="Barba completa" width="640" height="400" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-body p-4">
+                <div class="service-icon"><svg class="bi" aria-hidden="true"><use href="#bi-emoji-sunglasses"></use></svg></div>
+                <h5 class="card-title fw-bold">Barba Completa</h5>
+                <p class="card-text text-muted-theme">Modelagem com toalha quente, navalha e produtos hidratantes.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 35</span>
+                  <small class="text-muted-theme"><svg class="bi" aria-hidden="true"><use href="#bi-clock"></use></svg> 30 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100 featured">
+              <span class="ribbon">Mais pedido</span>
+              <picture>
+                <source type="image/avif" srcset="img/combo-320.avif 320w, img/combo-525.avif 525w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)">
+                <img src="img/combo-525.webp" srcset="img/combo-320.webp 320w, img/combo-525.webp 525w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)"
+                     class="card-img-top service-img" alt="Corte e barba" width="525" height="328" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-body p-4">
+                <div class="service-icon"><svg class="bi" aria-hidden="true"><use href="#bi-award"></use></svg></div>
+                <h5 class="card-title fw-bold">Corte + Barba</h5>
+                <p class="card-text text-muted-theme">O combo completo com desconto para você renovar o visual.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 70</span>
+                  <small class="text-muted-theme"><svg class="bi" aria-hidden="true"><use href="#bi-clock"></use></svg> 60 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <picture>
+                <source type="image/avif" srcset="img/hidratacao-320.avif 320w, img/hidratacao-612.avif 612w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)">
+                <img src="img/hidratacao-612.webp" srcset="img/hidratacao-320.webp 320w, img/hidratacao-612.webp 612w" sizes="(min-width: 1400px) 306px, (min-width: 1200px) 261px, (min-width: 992px) 216px, (min-width: 768px) 336px, (min-width: 576px) 516px, calc(100vw - 24px)"
+                     class="card-img-top service-img" alt="Hidratação e pigmentação" width="612" height="383" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-body p-4">
+                <div class="service-icon"><svg class="bi" aria-hidden="true"><use href="#bi-droplet-half"></use></svg></div>
+                <h5 class="card-title fw-bold">Hidratação & Pigmentação</h5>
+                <p class="card-text text-muted-theme">Tratamento para fios e barba com acabamento uniforme e natural.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 55</span>
+                  <small class="text-muted-theme"><svg class="bi" aria-hidden="true"><use href="#bi-clock"></use></svg> 45 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTOS ============ -->
+    <section id="depoimentos" class="py-section section-alt">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Depoimentos</span>
+          <h2 class="section-title">Quem passou por aqui <span class="text-brand">aprova</span></h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div id="carrosselDepoimentos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Depoimento 1"></button>
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="1" aria-label="Depoimento 2"></button>
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="2" aria-label="Depoimento 3"></button>
+              </div>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="testimonial text-center">
+                    <picture>
+                      <source type="image/avif" srcset="img/cliente1-140.avif">
+                      <img src="img/cliente1-140.webp" class="avatar" alt="Camila Moreira" width="70" height="70" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="stars mb-3" role="img" aria-label="Avaliação: 5 de 5 estrelas"><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg></div>
+                    <p class="fs-5">"Melhor corte que já fiz! Atendimento impecável e o ambiente é show. Já virei cliente fixa."</p>
+                    <h6 class="fw-bold mb-0">Camila Moreira</h6>
+                    <small class="text-muted-theme">Cliente há 3 anos</small>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="testimonial text-center">
+                    <picture>
+                      <source type="image/avif" srcset="img/cliente2-140.avif">
+                      <img src="img/cliente2-140.webp" class="avatar" alt="Juliana Santos" width="70" height="70" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="stars mb-3" role="img" aria-label="Avaliação: 5 de 5 estrelas"><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg></div>
+                    <p class="fs-5">"O corte ficou perfeito e a hidratação deixou meu cabelo incrível. Recomendo muito!"</p>
+                    <h6 class="fw-bold mb-0">Juliana Santos</h6>
+                    <small class="text-muted-theme">Cliente há 1 ano</small>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="testimonial text-center">
+                    <picture>
+                      <source type="image/avif" srcset="img/cliente3-140.avif">
+                      <img src="img/cliente3-140.webp" class="avatar" alt="Fernanda Almeida" width="70" height="70" loading="lazy" decoding="async">
+                    </picture>
+                    <div class="stars mb-3" role="img" aria-label="Avaliação: 4,5 de 5 estrelas"><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-fill"></use></svg><svg class="bi" aria-hidden="true"><use href="#bi-star-half"></use></svg></div>
+                    <p class="fs-5">"Pontualidade, simpatia e um resultado que dura. Fiquei apaixonada pelo meu novo visual!"</p>
+                    <h6 class="fw-bold mb-0">Fernanda Almeida</h6>
+                    <small class="text-muted-theme">Cliente há 2 anos</small>
+                  </div>
+                </div>
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="py-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Contato</span>
+          <h2 class="section-title">Vamos <span class="text-brand">conversar?</span></h2>
+          <p class="text-muted-theme mx-auto" style="max-width: 560px;">
+            Envie uma mensagem para agendar seu horário ou tirar dúvidas.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-4">
+            <div class="contact-info h-100">
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><svg class="bi" aria-hidden="true"><use href="#bi-geo-alt-fill"></use></svg></div>
+                <div><h6 class="fw-bold mb-0">Endereço</h6><small class="text-muted-theme">Rua das Tesouras, 123 - Centro</small></div>
+              </div>
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><svg class="bi" aria-hidden="true"><use href="#bi-telephone-fill"></use></svg></div>
+                <div><h6 class="fw-bold mb-0">Telefone</h6><small class="text-muted-theme">(31) 99999-0000</small></div>
+              </div>
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><svg class="bi" aria-hidden="true"><use href="#bi-clock-fill"></use></svg></div>
+                <div><h6 class="fw-bold mb-0">Horário</h6><small class="text-muted-theme">Seg a Sáb, 9h às 20h</small></div>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#" class="social-btn" aria-label="Instagram"><svg class="bi" aria-hidden="true"><use href="#bi-instagram"></use></svg></a>
+                <a href="#" class="social-btn" aria-label="WhatsApp"><svg class="bi" aria-hidden="true"><use href="#bi-whatsapp"></use></svg></a>
+                <a href="#" class="social-btn" aria-label="Facebook"><svg class="bi" aria-hidden="true"><use href="#bi-facebook"></use></svg></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form id="formContato" class="contact-form needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nome" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="nome" placeholder="Seu nome" required minlength="3">
+                  <div class="invalid-feedback">Informe seu nome (mínimo 3 letras).</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="voce@email.com" required>
+                  <div class="invalid-feedback">Informe um e-mail válido.</div>
+                </div>
+                <div class="col-12">
+                  <label for="mensagem" class="form-label">Mensagem</label>
+                  <textarea class="form-control" id="mensagem" rows="5" placeholder="Conte como podemos ajudar..." required minlength="10"></textarea>
+                  <div class="invalid-feedback">Escreva uma mensagem (mínimo 10 caracteres).</div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-brand btn-lg w-100"><svg class="bi me-2" aria-hidden="true"><use href="#bi-send"></use></svg>Enviar mensagem</button>
+                </div>
+              </div>
+              <div id="alertaSucesso" class="alert alert-success mt-3 d-none" role="alert">
+                <svg class="bi me-2" aria-hidden="true"><use href="#bi-check-circle-fill"></use></svg>Mensagem enviada com sucesso! Entraremos em contato em breve.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="fw-bold"><svg class="bi text-brand me-1" aria-hidden="true"><use href="#bi-scissors"></use></svg>Estilo <span class="text-brand">Livre</span></span>
+      <small>© 2026 Douglas Henrique. Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <button id="btnTopo" class="btn-topo" aria-label="Voltar ao topo"><svg class="bi" aria-hidden="true"><use href="#bi-arrow-up"></use></svg></button>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

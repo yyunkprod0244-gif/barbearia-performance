@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estilo Livre | Barbearia</title>
+  <meta name="description" content="Estilo Livre - Barbearia moderna com cortes, barba e cuidados premium.">
+
+  <!-- Bootstrap 5 + Bootstrap Icons + Fonte -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Aplica o tema salvo antes de renderizar (evita "piscar") -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('tema-estilo-livre') || 'light';
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-bs-theme', t === 'purple' ? 'dark' : 'light');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-glass">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#home">
+        <span class="logo-badge"><i class="bi bi-scissors"></i></span>
+        Estilo <span class="text-brand">Livre</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+              data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+              aria-expanded="false" aria-label="Abrir menu">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+            <button id="btnTema" class="btn btn-theme" type="button" aria-label="Alternar tema">
+              <i class="bi bi-moon-stars-fill" id="iconeTema"></i>
+              <span id="textoTema">Tema roxo</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============ HOME ============ -->
+    <section id="home" class="hero d-flex align-items-center">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <span class="badge-pill mb-3"><i class="bi bi-stars"></i> Barbearia premium desde 2015</span>
+            <h1 class="display-3 fw-extrabold mb-3">
+              Seu estilo, <br><span class="text-gradient">do seu jeito.</span>
+            </h1>
+            <p class="lead mb-4 text-muted-theme">
+              Cortes modernos, barba bem feita e um ambiente pensado para você relaxar.
+              Aqui cada detalhe conta para você sair com a melhor versão de si mesmo.
+            </p>
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+              <a href="#contato" class="btn btn-brand btn-lg"><i class="bi bi-calendar-check me-2"></i>Agendar horário</a>
+              <a href="#servicos" class="btn btn-outline-brand btn-lg">Ver serviços</a>
+            </div>
+            <div class="row mt-5 g-3 text-center text-lg-start">
+              <div class="col-4"><div class="stat-number">8+</div><small class="text-muted-theme">anos de estrada</small></div>
+              <div class="col-4"><div class="stat-number">12k</div><small class="text-muted-theme">clientes felizes</small></div>
+              <div class="col-4"><div class="stat-number">4.9</div><small class="text-muted-theme">avaliação média</small></div>
+            </div>
+          </div>
+
+          <!-- Imagem da Home: salve como img/home.webp -->
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="hero-photo">
+              <img src="img/home.webp" alt="Barbeiro realizando corte de cabelo" class="img-fluid">
+              <div class="hero-card hero-card-float">
+                <h6 class="fw-bold mb-1">Corte + Barba</h6>
+                <div class="d-flex justify-content-between align-items-center gap-4">
+                  <span class="fs-4 fw-bold text-brand">R$ 70</span>
+                  <span class="badge-pill"><i class="bi bi-clock"></i> 60 min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE NÓS ============ -->
+    <section id="sobre" class="py-section section-alt">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <!-- Imagem Sobre: salve como img/sobre.webp -->
+            <img src="img/sobre.webp" class="img-fluid rounded-4 shadow about-img" alt="Interior da barbearia Estilo Livre">
+          </div>
+          <div class="col-lg-6">
+            <span class="section-tag">Sobre nós</span>
+            <h2 class="section-title">Tradição de barbearia com <span class="text-brand">visual moderno</span></h2>
+            <p class="text-muted-theme">
+              A Estilo Livre nasceu da vontade de unir o clássico da barbearia com o que há de mais atual em
+              tendências. Nosso time é formado por profissionais apaixonados pelo que fazem, sempre em busca
+              de técnicas novas e de um atendimento que faz você se sentir em casa.
+            </p>
+            <p class="text-muted-theme">
+              Aqui você encontra um espaço descontraído, produtos de qualidade e um serviço personalizado:
+              cada corte é pensado para o seu rosto, sua rotina e a sua personalidade.
+            </p>
+            <ul class="list-unstyled mt-4 mb-0">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Profissionais experientes e atualizados</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Produtos premium e higiene rigorosa</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Ambiente confortável, com café e Wi-Fi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVIÇOS ============ -->
+    <section id="servicos" class="py-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Serviços</span>
+          <h2 class="section-title">O que <span class="text-brand">fazemos</span> por você</h2>
+          <p class="text-muted-theme mx-auto" style="max-width: 560px;">
+            Escolha o serviço ideal e saia daqui pronto para qualquer ocasião.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Imagem: img/corte.webp -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <img src="img/corte.webp" class="card-img-top service-img" alt="Corte de cabelo">
+              <div class="card-body p-4">
+                <div class="service-icon"><i class="bi bi-scissors"></i></div>
+                <h5 class="card-title fw-bold">Corte de Cabelo</h5>
+                <p class="card-text text-muted-theme">Degradê, social, navalhado ou clássico, do jeito que você quiser.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 45</span>
+                  <small class="text-muted-theme"><i class="bi bi-clock"></i> 40 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagem: img/barba.webp -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <img src="img/barba.webp" class="card-img-top service-img" alt="Barba completa">
+              <div class="card-body p-4">
+                <div class="service-icon"><i class="bi bi-emoji-sunglasses"></i></div>
+                <h5 class="card-title fw-bold">Barba Completa</h5>
+                <p class="card-text text-muted-theme">Modelagem com toalha quente, navalha e produtos hidratantes.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 35</span>
+                  <small class="text-muted-theme"><i class="bi bi-clock"></i> 30 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagem: img/combo.webp -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100 featured">
+              <span class="ribbon">Mais pedido</span>
+              <img src="img/combo.webp" class="card-img-top service-img" alt="Corte e barba">
+              <div class="card-body p-4">
+                <div class="service-icon"><i class="bi bi-award"></i></div>
+                <h5 class="card-title fw-bold">Corte + Barba</h5>
+                <p class="card-text text-muted-theme">O combo completo com desconto para você renovar o visual.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 70</span>
+                  <small class="text-muted-theme"><i class="bi bi-clock"></i> 60 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagem: img/hidratacao.webp -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="card service-card h-100">
+              <img src="img/hidratacao.webp" class="card-img-top service-img" alt="Hidratação e pigmentação">
+              <div class="card-body p-4">
+                <div class="service-icon"><i class="bi bi-droplet-half"></i></div>
+                <h5 class="card-title fw-bold">Hidratação & Pigmentação</h5>
+                <p class="card-text text-muted-theme">Tratamento para fios e barba com acabamento uniforme e natural.</p>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="fw-bold fs-5 text-brand">R$ 55</span>
+                  <small class="text-muted-theme"><i class="bi bi-clock"></i> 45 min</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEPOIMENTOS ============ -->
+    <section id="depoimentos" class="py-section section-alt">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Depoimentos</span>
+          <h2 class="section-title">Quem passou por aqui <span class="text-brand">aprova</span></h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div id="carrosselDepoimentos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Depoimento 1"></button>
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="1" aria-label="Depoimento 2"></button>
+                <button type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide-to="2" aria-label="Depoimento 3"></button>
+              </div>
+
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="testimonial text-center">
+                    <img src="img/cliente1.webp" class="avatar" alt="Camila Moreira">
+                    <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                    <p class="fs-5">"Melhor corte que já fiz! Atendimento impecável e o ambiente é show. Já virei cliente fixa."</p>
+                    <h6 class="fw-bold mb-0">Camila Moreira</h6>
+                    <small class="text-muted-theme">Cliente há 3 anos</small>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="testimonial text-center">
+                    <img src="img/cliente2.webp" class="avatar" alt="Juliana Santos">
+                    <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                    <p class="fs-5">"O corte ficou perfeito e a hidratação deixou meu cabelo incrível. Recomendo muito!"</p>
+                    <h6 class="fw-bold mb-0">Juliana Santos</h6>
+                    <small class="text-muted-theme">Cliente há 1 ano</small>
+                  </div>
+                </div>
+
+                <div class="carousel-item">
+                  <div class="testimonial text-center">
+                    <img src="img/cliente3.webp" class="avatar" alt="Fernanda Almeida">
+                    <div class="stars mb-3"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+                    <p class="fs-5">"Pontualidade, simpatia e um resultado que dura. Fiquei apaixonada pelo meu novo visual!"</p>
+                    <h6 class="fw-bold mb-0">Fernanda Almeida</h6>
+                    <small class="text-muted-theme">Cliente há 2 anos</small>
+                  </div>
+                </div>
+              </div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carrosselDepoimentos" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="py-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="section-tag">Contato</span>
+          <h2 class="section-title">Vamos <span class="text-brand">conversar?</span></h2>
+          <p class="text-muted-theme mx-auto" style="max-width: 560px;">
+            Envie uma mensagem para agendar seu horário ou tirar dúvidas.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-4">
+            <div class="contact-info h-100">
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                <div><h6 class="fw-bold mb-0">Endereço</h6><small class="text-muted-theme">Rua das Tesouras, 123 - Centro</small></div>
+              </div>
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                <div><h6 class="fw-bold mb-0">Telefone</h6><small class="text-muted-theme">(31) 99999-0000</small></div>
+              </div>
+              <div class="d-flex gap-3 mb-4">
+                <div class="contact-icon"><i class="bi bi-clock-fill"></i></div>
+                <div><h6 class="fw-bold mb-0">Horário</h6><small class="text-muted-theme">Seg a Sáb, 9h às 20h</small></div>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form id="formContato" class="contact-form needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nome" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="nome" placeholder="Seu nome" required minlength="3">
+                  <div class="invalid-feedback">Informe seu nome (mínimo 3 letras).</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="voce@email.com" required>
+                  <div class="invalid-feedback">Informe um e-mail válido.</div>
+                </div>
+                <div class="col-12">
+                  <label for="mensagem" class="form-label">Mensagem</label>
+                  <textarea class="form-control" id="mensagem" rows="5" placeholder="Conte como podemos ajudar..." required minlength="10"></textarea>
+                  <div class="invalid-feedback">Escreva uma mensagem (mínimo 10 caracteres).</div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-brand btn-lg w-100"><i class="bi bi-send me-2"></i>Enviar mensagem</button>
+                </div>
+              </div>
+              <div id="alertaSucesso" class="alert alert-success mt-3 d-none" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i>Mensagem enviada com sucesso! Entraremos em contato em breve.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span class="fw-bold"><i class="bi bi-scissors text-brand me-1"></i>Estilo <span class="text-brand">Livre</span></span>
+      <small>© 2026 Douglas Henrique. Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
+  <button id="btnTopo" class="btn-topo" aria-label="Voltar ao topo"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

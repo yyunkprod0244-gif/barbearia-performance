@@ -8,8 +8,13 @@
 
   <meta name="theme-color" content="#7c3aed">
 
-  <!-- Fontes locais (Poppins, subconjunto latin em woff2): pré-carrega as do texto principal -->
+  <!-- Fontes locais (Poppins, subconjunto latin em woff2, ~8 KB cada).
+       Todos os pesos aparecem na primeira tela, então todos são pré-carregados:
+       assim o navegador baixa as fontes junto com o HTML, sem esperar o CSS. -->
   <link rel="preload" href="fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Bootstrap enxuto (só as regras usadas) + estilos do projeto.

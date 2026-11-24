@@ -8,14 +8,9 @@
 
   <meta name="theme-color" content="#7c3aed">
 
-  <!-- Fontes locais (Poppins, subconjunto latin em woff2, ~8 KB cada).
-       Todos os pesos aparecem na primeira tela, então todos são pré-carregados:
-       assim o navegador baixa as fontes junto com o HTML, sem esperar o CSS. -->
-  <link rel="preload" href="fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/poppins-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/poppins-800.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Fontes locais (Poppins, subconjunto latin em woff2, ~8 KB cada), carregadas pelo
+       @font-face do CSS com font-display: swap. Sem <link rel="preload">: no Chrome atual
+       um preload de fonte pode segurar a primeira pintura da página (testado no PageSpeed). -->
 
   <!-- Bootstrap enxuto (só as regras usadas) + estilos do projeto.
        No build (dist/) os dois arquivos são minificados e embutidos aqui. -->
